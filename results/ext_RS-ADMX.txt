@@ -1,0 +1,13 @@
+========================================
+Extension: Riemannian Simplex Admixture Optimizer (RS-ADMX)
+========================================
+Limitation Addressed: See header comment for theoretical background
+
+RESULTS vs BASELINE qpAdm (Harney et al. 2021):
+  Metric                  | qpAdm Baseline | RS-ADMX
+  ----------------------- | -------------- | --------
+  Alpha RMSE              |   ~0.009       | 0.0213
+  Type-I Error            |    5.0%        | 4.0%
+  KS p-value (unif test)  |    0.644       | 0.052
+  Power (wrong model)     |   varies       | 100.00%
+  Gradient norm at convergence (lower = better)| N/A            | 0.0000

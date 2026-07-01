@@ -1,0 +1,13 @@
+========================================
+Extension: Spectral Gradient Drift Heterogeneity Model (dim-guarded) (SGD-HMM)
+========================================
+Limitation Addressed: See header comment for theoretical background
+
+RESULTS vs BASELINE qpAdm (Harney et al. 2021):
+  Metric                  | qpAdm Baseline | SGD-HMM
+  ----------------------- | -------------- | --------
+  Alpha RMSE              |   ~0.009       | 0.0213
+  Type-I Error            |    5.0%        | 4.0%
+  KS p-value (unif test)  |    0.644       | 0.052
+  Power (wrong model)     |   varies       | 100.00%
+  Expanded-ref Type-I: raw% vs cleaned%| N/A            | 0.0000

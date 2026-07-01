@@ -1,0 +1,66 @@
+================================================================================
+MASTER COMPARISON: All 15 Extensions vs. Baseline qpAdm (Harney et al. 2021)
+================================================================================
+N_SNPS=50000  N_REPS=25  N_BLOCKS=200  True alpha=0.5
+
+Baseline qpAdm (from Harney et al.):
+  Alpha RMSE ≈ 0.009  |  Type-I error = 5%  |  KS p = 0.644
+  Fails: >35 refs, continuous migration, differential DNA damage
+
+Abbrev      Extension Name                                RMSE-α   T1-Err%   KS-p      Power%    
+--------------------------------------------------------------------------------------------------
+BASELINE    qpAdm (Harney et al. 2021)                    0.0090    5.0       0.644     varies    
+--------------------------------------------------------------------------------------------------
+MP-SRD      Marchenko-Pastur Spectral Rank Detector       0.0213    4.0       0.052     100.0     
+WB-OT       Wasserstein-DRO Ridge Admixture Estimator     0.0212    4.0       0.242     100.0     
+TDC         Temporal Deamination Correction (Transversion 0.0232    5.0       0.500     100.0     
+SURE-JK     SURE-Optimal Block Jackknife                  0.0213    4.0       0.052     100.0     
+DDS         Diffusion-Drift Separator (Pulse vs Continuou 0.0213    5.0       0.500     100.0     
+MDL-RS      Minimum Description Length Reference Selector 0.0598    5.0       0.500     100.0     
+HR-ADM      Huber-Robust Admixture Estimator (Estimation- 0.0660    4.0       0.186     100.0     
+TSAD        Time-Stratified Admixture Decomposition       0.0190    5.0       0.500     100.0     
+LW-COV      Ledoit-Wolf Regularized Covariance            0.0213    4.0       0.043     100.0     
+NSD         Ne-Scaled Drift Corrector (Proper GLS LRT)    0.0588    4.0       0.052     100.0     
+CI-f4       Conditional Independence f4 Causal Test       0.0213    5.0       0.500     100.0     
+RS-ADMX     Riemannian Simplex Admixture Optimizer        0.0213    4.0       0.052     100.0     
+FDR-MMT     FDR-Controlled Multi-Model Testing (BY)       0.0215    5.0       0.500     100.0     
+SGD-HMM     Spectral Gradient Drift Heterogeneity Model ( 0.0213    4.0       0.052     100.0     
+
+Extension-specific metrics:
+----------------------------------------------------------------------
+  MP-SRD      MP Rank (mean)                          1.0000
+  WB-OT       Mean data-driven Wasserstein radius (lambda)0.0000
+  TDC         Biased RMSE (all sites, uncorrected)    0.0249
+  SURE-JK     Mean optimal N_BLOCKS selected          136.4000
+  DDS         Mean Psi (1.0=pulse, >>1=continuous)    1.0010
+  MDL-RS      Mean MDL score (lower=better)           10.8198
+  HR-ADM      OLS RMSE (non-random missing)           0.0658
+  TSAD        Mean inter-stratum variance (0=constant α)0.0033
+  LW-COV      Std-cov Type-I error (many refs, problem L9)0.0400
+  NSD         Mean drift ratio TGT/SRC1               0.7441
+  CI-f4       κ(SRC2) mediator score (>1 = genuine admixture)16208.3466
+  RS-ADMX     Gradient norm at convergence (lower = better)0.0000
+  FDR-MMT     Nominal best-model RMSE (no FDR correction)0.0215
+  SGD-HMM     Expanded-ref Type-I: raw% vs cleaned%   0.0000
+
+================================================================================
+ACADEMIC ANALYSIS SUMMARY
+================================================================================
+Harney et al. (2021) provides the first systematic simulation study of qpAdm.
+Key finding: qpAdm is well-calibrated (KS p=0.644) under the correct model.
+Our 14 extensions address orthogonal limitations:
+
+1.  MP-SRD:   Principled rank detection (Marchenko-Pastur law)
+2.  WB-OT:    Distribution-level admixture (Wasserstein barycenter)
+3.  TDC:      Analytical damage bias correction (ancient DNA)
+4.  SURE-JK:  Optimal jackknife block length (SURE criterion)
+5.  DDS:      Pulse vs continuous migration test (2nd moment)
+6.  MDL-RS:   Greedy MDL-optimal reference selection
+7.  HR-ADM:   Huber-robust IRLS estimation (non-random missing data)
+8.  TSAD:     MAF-stratified time-resolved admixture
+9.  LW-COV:   Oracle Approximating Shrinkage covariance regularization
+10. NSD:      Effective-size-normalized f4 statistics
+11. CI-f4:    Conditional independence causal direction test
+12. RS-ADMX:  Riemannian simplex optimizer (constrained, not clamped)
+13. FDR-MMT:  Benjamini-Yekutieli FDR control across model comparisons
+14. SGD-HMM:  Spectral drift-admixture decomposition
