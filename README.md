@@ -532,8 +532,6 @@ The 14 extensions are research prototypes, not production tools. They should not
 **Author:** Nihar Mahesh Jani  
 **Email:** niharmaheshjani@gmail.com  
 **GitHub:** [github.com/NiharJani2002](https://github.com/NiharJani2002)  
-**Affiliation:** Independent Researcher;
+**Affiliation:** Independent Researcher
 
 ---
-
-*"The only way to get the best out of an argument is to avoid it. Build on what already exists."*
